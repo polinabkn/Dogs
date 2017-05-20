@@ -1,0 +1,3 @@
+{% for dog in alldogs %}
+		<a href="/dogpage/{{dog['Name']}}">{{dog['Name']}}</a> ({{dog['Breed']}})<br>
+{% endfor %}

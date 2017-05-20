@@ -1,0 +1,14 @@
+<h1>{{dog['Name']}}</h1>
+
+{% for item in dog%}
+	{% if not item == "Image" %}
+		<strong>{{item}}</strong> {{dog[item]}} <br>
+	{% endif %}
+{% endfor %}
+<a href='/pasha'>back</a>
+
+<img src="{{dog['Image']}}">
+
+
+<!--Breed {{ dog['Breed'] }}
+Number {{ dog['Number'] }}-->
