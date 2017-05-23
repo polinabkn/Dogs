@@ -1,8 +1,9 @@
-from flask import Flask, request, render_template, redirect
-from dogs import get_dog, get_dogs #импортируем функцию get_dog
+from flask import Flask, request, render_template, redirect, session
+from dogs import get_dog, get_dogs,add_dog,delete_dog #импортируем функцию get_dog
 
 app=Flask(__name__) #в переменной app содержится весь сайт
 app.debug=True #explains the error
+app.secret_key="p"
 
 @app.route("/") #главная страница
 def index():
@@ -40,6 +41,32 @@ def testing():
     if int(dic["love_walk"])==5:
         return "Your breed is Labrador! See some puppies <a href='/result?a=labrador'>here</a>"
     return "hello"
+
+@app.route("/modifying")
+def modifying():
+    if session.get('pass',"")=="pasha":
+        return render_template("modifying.html",alldogs=get_dogs(),text=request.args.get("text",""))
+    else:
+        return redirect("/login")
+
+@app.route("/addDog")
+def addDog():
+    add_dog(request.args)
+    return redirect("/modifying?text=Success!")
+
+@app.route("/deleteDog/<name>")
+def deleteDog(name):
+    delete_dog(name)
+    return redirect("/modifying")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/logging")
+def logging():
+    session['pass']=request.args['pass']
+    return redirect("/modifying")
     
 #"Порода "+ get_dog(text)['breed']
 
