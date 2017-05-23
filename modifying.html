@@ -1,0 +1,25 @@
+Fill in all the necessary fields and submit the data<br><br>
+<form action="addDog">Image(URL)<input name="Image"><br>
+Breed  <input name="Breed"><br>
+Name  <input name="Name"><br>
+Number  <input name="Number"><br>
+Date of Birth  <input name="Date of Birth"><br>
+Sex  <input name="Sex"><br>
+Color  <input name="Color"><br>
+Markings  <input name="Markings"><br>
+Name and number of Sire  <input name="Name and number of Sire"><br>
+Name and number of Dam  <input name="Name and number of Dam"><br>
+Name of Breeder  <input name="Name of Breeder"><br>
+Age  <input name="Age"><br>
+Defects  <input name="Defects"><br>
+Allergies  <input name="Allergies"><br>
+Disease liability  <input name="Disease liability"><br>
+<button type="submit">Add</button> </form><br>
+<span style="color:red">{{text}}</span><br>
+
+
+{% for dog in alldogs %}
+<a href="/deleteDog/{{dog['Name']}}">{{dog['Name']}}</a><br>
+{% endfor %}
+
+
