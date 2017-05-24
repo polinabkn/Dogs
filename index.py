@@ -35,19 +35,17 @@ def result():
 def test():
     return render_template("test.html")
 
-@app.route("/testing")
-def testing():
-    dic=request.args
-    if int(dic["love_walk"])==5:
-        return "Your breed is Labrador! See some puppies <a href='/result?a=labrador'>here</a>"
-    return "hello"
-
 @app.route("/modifying")
 def modifying():
-    if session.get('pass',"")=="pasha":
+    if session.get('pass',"")=="pash":
         return render_template("modifying.html",alldogs=get_dogs(),text=request.args.get("text",""))
     else:
         return redirect("/login")
+
+@app.route("/log_out")
+def log_out():
+    session['pass']=""
+    return redirect("/")
 
 @app.route("/addDog")
 def addDog():
@@ -67,7 +65,23 @@ def login():
 def logging():
     session['pass']=request.args['pass']
     return redirect("/modifying")
+
+@app.route("/testing")
+def testing():
+    dic = request.args
+    rates = {}
+    for n in dic:
+        breeds = dic[n].split(",")
+        for breed in breeds:
+            rates[breed.lower().strip()] = rates.get(breed.lower().strip(), 0) + 1
+    li = list(rates.items())
+    li.sort(key = lambda x: 0-x[1])
+    li = [n[0] for n in li]
+    # в li лежат породы в порядке убывания 
+    return li[0].capitalize() +" is the right dog for you!<br><a href='result?a=" + li[0] + "'</a>See which puppies are available"
+        
     
+
 #"Порода "+ get_dog(text)['breed']
 
 #app.run()
