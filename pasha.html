@@ -1,4 +1,6 @@
+<h2>All dogs</h2><br>
+<body bgcolor="#f5f5dc" style="margin-left: 25px;"></body>
 {% for dog in alldogs %}
-		<a href="/dogpage/{{dog['Name']}}">{{dog['Name']}}</a> ({{dog['Breed']}})<br>
+		<a href="/dogpage/{{dog['Name']}}" style="text-decoration:none;">{{dog['Name']}}</a> ({{dog['Breed']}})<br>
 {% endfor %}
-<br><a href="/"> back </a>
+<br><a href='/'><button type="submit">To the main page</button></a>
