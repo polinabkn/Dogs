@@ -1,10 +1,4 @@
 from json import loads, dumps
-import vk_api
-
-
-token='60333e916062691b1a5aaf8ab07811f1029bc23864c2198aa03a380ee3468e2a4bc096227f683402a069d'
-vk = vk_api.VkApi(token=token)
-
 
 def get_dogs():
     with open('Dogs.txt', 'r', encoding="utf-8") as f:
