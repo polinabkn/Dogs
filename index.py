@@ -1,18 +1,17 @@
 from flask import Flask, request, render_template, redirect, session
-from dogs import get_dog, get_dogs,add_dog,delete_dog #импортируем функцию get_dog
+from dogs import get_dog, get_dogs,add_dog,delete_dog
 
-app=Flask(__name__) #в переменной app содержится весь сайт
-app.debug=True #explains the error
+app=Flask(__name__)
+app.debug=True
 app.secret_key="p"
 
-@app.route("/") #главная страница
+@app.route("/")
 def index():
     return render_template("index.html")
-#<br> - перенос строки, <a>...</a> - link, <form>
 
-@app.route("/pasha")
-def pasha():
-    return render_template("pasha.html", alldogs=get_dogs())
+@app.route("/dogslist")
+def dogslist():
+    return render_template("dogslist.html", alldogs=get_dogs())
 
 @app.route("/dogpage/<name>")
 def dogpage(name):
@@ -24,10 +23,10 @@ def result():
     keydogs = []
     dogs=get_dogs()
     for dog in dogs:
-        if key in dog['Name'].lower()+dog['Breed'].lower()+dog['Color'].lower():
+        if key.lower() in dog['Name'].lower()+dog['Breed'].lower()+dog['Color'].lower():
             keydogs.append(dog)
     if len(keydogs)>0:
-        return render_template("pasha.html", alldogs=keydogs)
+        return render_template("dogslist.html", alldogs=keydogs)
     else:
         return "No dogs found <a href='/'>back</a>"
 
@@ -68,6 +67,7 @@ def logging():
 
 @app.route("/testing")
 def testing():
+    
     dic = request.args
     rates = {}
     for n in dic:
@@ -77,12 +77,9 @@ def testing():
     li = list(rates.items())
     li.sort(key = lambda x: 0-x[1])
     li = [n[0] for n in li]
-    # в li лежат породы в порядке убывания 
-    return li[0].capitalize() +" is the right dog for you!<br><a href='result?a=" + li[0] + "'</a>See which puppies are available"
-        
-    
+    if len(li)==0:
+        return "<body bgcolor='#f5f5dc'></body>You haven't answered any questions"
+    else:
+        return li[0].capitalize() +"<body bgcolor='#f5f5dc'></body> is the right dog for you!<br><a href='result?a=" + li[0] + "'</a>See which puppies are available"
 
-#"Порода "+ get_dog(text)['breed']
-
-#app.run()
 app.run("127.0.0.1",5001)
