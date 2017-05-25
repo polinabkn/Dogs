@@ -31,6 +31,21 @@ def get_dog(name):
     dogs=get_dogs()
     dogs=[dog for dog in dogs if dog['Name']==name]
     return dogs[0]
+
+def get_information():
+    with open('Information.txt', 'r', encoding="utf-8") as f:
+        text1=f.read()
+        dic1 =loads(text1)
+    return dic1['items']
+
+def get_breeditem(name):
+    breeds=get_information()
+    breeds=[breed for breed in breeds if breed['Breed']==name]
+    return breeds[0]
+
+def get_breedinfo(name):
+    need=get_breeditem(name)
+    return need['Information']
         
 
 #add_dog({'breed':'labrador','color':'black','age':'puppy','sex':'male','date of birth': 'January 6, 1999','tattoo':'BBI 162','name':'ENS LUMENS KEEPER of SECRETS'})
