@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, redirect, session
-from dogs import get_dog, get_dogs,add_dog,delete_dog
+from dogs import get_dog, get_dogs,add_dog,delete_dog,get_information,get_breedinfo,get_breeditem
 
 app=Flask(__name__)
 app.debug=True
@@ -80,6 +80,5 @@ def testing():
     if len(li)==0:
         return "<body bgcolor='#f5f5dc'></body>You haven't answered any questions"
     else:
-        return li[0].capitalize() +"<body bgcolor='#f5f5dc'></body> is the right dog for you!<br><a href='result?a=" + li[0] + "'</a>See which puppies are available"
-
+        return "<h3>"+li[0].capitalize()+" is the right dog for you!</h3><br>"+get_breedinfo(str(li[0]).title()) + "<body bgcolor='#f5f5dc'></body><br><a href='result?a=" + li[0] + "'</a><br>See which puppies are available<br>" #+get_breedinfo(str(li[0]).title())"
 app.run("127.0.0.1",5001)
