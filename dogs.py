@@ -41,6 +41,3 @@ def get_breedinfo(name):
     need=get_breeditem(name)
     return need['Information']
         
-
-#add_dog({'breed':'labrador','color':'black','age':'puppy','sex':'male','date of birth': 'January 6, 1999','tattoo':'BBI 162','name':'ENS LUMENS KEEPER of SECRETS'})
-#get_dog('ENS LUMENS KEEPER of SECRETS')

@@ -36,7 +36,7 @@ def test():
 
 @app.route("/modifying")
 def modifying():
-    if session.get('pass',"")=="pash":
+    if session.get('pass',"")=="AdminPassword":
         return render_template("modifying.html",alldogs=get_dogs(),text=request.args.get("text",""))
     else:
         return redirect("/login")
