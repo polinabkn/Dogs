@@ -1,27 +1,29 @@
-Fill in all the necessary fields and submit the data<br><br>
-<form action="addDog">Image(URL)<input name="Image"><br>
-Breed  <input name="Breed"><br>
-Name  <input name="Name"><br>
-Number  <input name="Number"><br>
-Date of Birth  <input name="Date of Birth"><br>
-Sex  <input name="Sex"><br>
-Color  <input name="Color"><br>
-Markings  <input name="Markings"><br>
-Name and number of Sire  <input name="Name and number of Sire"><br>
-Name and number of Dam  <input name="Name and number of Dam"><br>
-Name of Breeder  <input name="Name of Breeder"><br>
-Age  <input name="Age"><br>
-Defects  <input name="Defects"><br>
-Allergies  <input name="Allergies"><br>
-Disease liability  <input name="Disease liability"><br>
+<body bgcolor="#f5f5dc" style="margin-left: 25px;"></body><form action="/testing"> 
+<strong>Fill in all the necessary fields and submit the data</strong><br><br>
+<form action="addDog">Image(URL)<input name="Image" style="margin-left: 94px;"><br>
+Breed  <input name="Breed" style="margin-left: 135px;"><br>
+Name  <input name="Name" style="margin-left: 135px;"><br>
+Number  <input name="Number" style="margin-left: 121px;"><br>
+Date of Birth  <input name="Date of Birth" style="margin-left: 89px;"><br>
+Sex  <input name="Sex" style="margin-left: 149px;"><br>
+Color  <input name="Color" style="margin-left: 137px;"><br>
+Markings  <input name="Markings" style="margin-left: 112px;"><br>
+Name and number of Sire  <input name="Name and number of Sire" style="margin-left: 8px;"><br>
+Name and number of Dam  <input name="Name and number of Dam" style="margin-left: 2px;"><br>
+Name of Breeder  <input name="Name of Breeder" style="margin-left: 63px;"><br>
+Age  <input name="Age" style="margin-left: 146px;"><br>
+Defects  <input name="Defects" style="margin-left: 124px;"><br>
+Allergies  <input name="Allergies" style="margin-left: 115px;"><br>
+Disease liability  <input name="Disease liability" style="margin-left: 69px;"><br>
 <button type="submit">Add</button> </form><br>
 <span style="color:red">{{text}}</span><br>
 
-
+<strong>Delete the dog irretrievably by clicking it's name</strong><br><br>
 {% for dog in alldogs %}
-<a href="/deleteDog/{{dog['Name']}}">{{dog['Name']}}</a><br>
+<a href="/deleteDog/{{dog['Name']}}" style="text-decoration:none;">{{dog['Name']}}</a><br>
 {% endfor %}
 
 
-<br><form action="log_out"><button type="submit" >Log out</button></form>
-<br><a href="/">To the main page</a>
+<br>
+<form action="log_out"><button type="submit" >Log out</button></form>
+<a href='/'><button type="submit">To the main page</button></a>
