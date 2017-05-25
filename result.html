@@ -1,14 +1,16 @@
+<body bgcolor="#f5f5dc"></body>
 <h1>{{dog['Name']}}</h1>
+<img align="left" hspace="20" src="{{dog['Image']}}"align="center" height="300">
 
 {% for item in dog%}
 	{% if not item == "Image" %}
 		<strong>{{item}}</strong> {{dog[item]}} <br>
 	{% endif %}
 {% endfor %}
-<a href='/pasha'>back</a><br>
-<a href='/'>To the main page</a>
+<br><a href='/pasha'><button type="submit">Back</button></a>	<a href='/'><button type="submit">To the main page</button></a>
 
-<img src="{{dog['Image']}}">
+
+
 
 
 <!--Breed {{ dog['Breed'] }}
